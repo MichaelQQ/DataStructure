@@ -26,16 +26,41 @@ TREE* create_tree (){
 
 void preOrderPrint(NODE* ptr){
 	printf("%d ", ptr->num);
+
 	if(ptr->left != NULL)
 		preOrderPrint(ptr->left);
+
 	if(ptr->right != NULL)
 		preOrderPrint(ptr->right);
 
 	return;
 }
 
+void inOrderPrint(NODE* ptr){
+	if(ptr->left != NULL)
+		inOrderPrint(ptr->left);
+
+	printf("%d ", ptr->num);
+
+	if(ptr->right != NULL)
+		inOrderPrint(ptr->right);
+
+	return;
+}
+
+void postOrderPrint(NODE* ptr){
+	if(ptr->left != NULL)
+		inOrderPrint(ptr->left);
+
+	if(ptr->right != NULL)
+		inOrderPrint(ptr->right);
+
+	printf("%d ", ptr->num);
+
+	return;
+}
+
 void linklistprint(NODE* ptr){
-	printf("\nprint list:");
 	while(ptr != NULL){
 		printf("%d ", ptr->num);
 		ptr = ptr->next;
@@ -81,10 +106,16 @@ int main(){
 	int i=0;
 
 	tree = create_tree();
-	for(i=0; i<20; i++){
+	for(i=0; i<13; i++){
 		insertNode(tree, i);
 	}
+	printf("PreOrder: ");
 	preOrderPrint(tree->root);
+	printf("\nInOrder: ");
+	inOrderPrint(tree->root);
+	printf("\npostOrder: ");
+	postOrderPrint(tree->root);
+	printf("\nPrint list:");
 	linklistprint(tree->root);
 	printf("\ntree count: %d\n", tree->count);
 
