@@ -50,10 +50,10 @@ void inOrderPrint(NODE* ptr){
 
 void postOrderPrint(NODE* ptr){
 	if(ptr->left != NULL)
-		inOrderPrint(ptr->left);
+		postOrderPrint(ptr->left);
 
 	if(ptr->right != NULL)
-		inOrderPrint(ptr->right);
+		postOrderPrint(ptr->right);
 
 	printf("%d ", ptr->num);
 
